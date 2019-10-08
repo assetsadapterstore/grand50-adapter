@@ -61,3 +61,10 @@ func TestAddressDecoder_ScriptPubKeyToBech32Address(t *testing.T) {
 
 	t.Logf("addr: %s", addr)
 }
+
+
+func TestAddressDecoder_VerifyAddress(t *testing.T) {
+	grand50_addrdec.Default.IsTestNet = false
+	check := grand50_addrdec.Default.AddressVerify("2GMhkR1uYueeK5cbG5k3XHfW1aSdALjq7Bs")
+	t.Logf("check: %v \n", check)
+}

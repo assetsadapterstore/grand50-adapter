@@ -1,6 +1,7 @@
 package grand50_addrdec
 
 import (
+	"github.com/blocktree/go-owaddress"
 	"github.com/blocktree/go-owcdrivers/addressEncoder"
 	"github.com/blocktree/openwallet/openwallet"
 )
@@ -68,6 +69,9 @@ func (dec *AddressDecoderV2) AddressEncode(hash []byte, opts ...interface{}) (st
 
 // AddressVerify 地址校验
 func (dec *AddressDecoderV2) AddressVerify(address string, opts ...interface{}) bool {
-
-	return true
+	valid, err := owaddress.Verify("g50", address)
+	if err != nil {
+		return false
+	}
+	return valid
 }
